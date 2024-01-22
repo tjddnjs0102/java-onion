@@ -1,21 +1,26 @@
 package org.java.onion.chapter2.testandrefactor;
 
 
+
+
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
 /*
-JUnit은 @TEST 어노테이션을 사용해 각각의 테스트 메소드를 독립적으로 실행할 수 있다.
+assertEquals(기대값, 결과값);
  */
-public class CalculatorTestV3 {
+public class CalculatorTestV4 {
     @Test
     public void add() {
         CalculatorV2 cal = new CalculatorV2();
-        System.out.println(cal.add(6,3));
+        assertEquals(9, cal.add(6,3));
     }
 
     @Test
     public void subtract() {
         CalculatorV2 cal = new CalculatorV2();
-        System.out.println(cal.subtract(6,3));
+        assertEquals(3, cal.subtract(6,3));
     }
 }
