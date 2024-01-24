@@ -7,7 +7,19 @@ public class StringCalculator {
         if (!text.contains(",")) {
             return -1;
         }
-        return 0;
+
+        String[] numbers = text.split(",");
+
+        int sum = 0;
+        for (String number : numbers) {
+            try {
+                sum += Integer.parseInt(number.trim());
+            }catch (NumberFormatException e) {
+                return -1;
+            }
+        }
+
+        return sum;
     }
 
 
