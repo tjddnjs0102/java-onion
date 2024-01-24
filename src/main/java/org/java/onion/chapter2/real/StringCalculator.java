@@ -5,11 +5,18 @@ import java.util.Scanner;
 public class StringCalculator {
     // 요구사항: 전달하는 문자를 구분자로 분리한 후 각 숫자의 합을 구해 반환한다.
     int add(String text) {
-        if (!text.contains(", | :")) {
-            return -1;
+
+        if (text == null || text.isEmpty()) {
+            return 0;
         }
 
-        String[] numbers = text.split(", | :");
+
+        if (!text.matches(".*[,|:].*")) {
+            return -2;
+        }
+
+        String[] numbers = text.split(",|:");
+
         int sum = 0;
         for (String number : numbers) {
             int num;
@@ -33,13 +40,13 @@ public class StringCalculator {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("쉼표(,)로 구분된 값을 입력하시오.");
+            System.out.println("쉼표(,) 혹은 클론(:)으로 구분된 값을 입력하시오.");
             String input = scanner.nextLine();
             StringCalculator calculator = new StringCalculator();
             int result = calculator.add(input);
 
-            if (result == -1) {
-                System.out.println("오류: 입력은 쉼표로 구분되어야 합니다. 다시 시도해주세요.");
+            if (result == -2) {
+                System.out.println("오류: 입력은 쉼표 혹은 클론으로 구분되어야 합니다. 다시 시도해주세요.");
                 continue;
             }
 
