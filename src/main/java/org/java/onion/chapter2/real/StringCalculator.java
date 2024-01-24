@@ -12,11 +12,17 @@ public class StringCalculator {
 
         int sum = 0;
         for (String number : numbers) {
+            int num;
             try {
-                sum += Integer.parseInt(number.trim());
+                num = Integer.parseInt(number.trim());
             }catch (NumberFormatException e) {
                 return -1;
             }
+            if (num < 0) {
+                throw new RuntimeException("음수는 입력할 수 없습니다.");
+            }
+
+            sum += num;
         }
 
         return sum;
