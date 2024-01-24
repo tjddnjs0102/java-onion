@@ -3,13 +3,13 @@ package org.java.onion.chapter2.real;
 import java.util.Scanner;
 
 public class StringCalculator {
+    // 요구사항: 전달하는 문자를 구분자로 분리한 후 각 숫자의 합을 구해 반환한다.
     int add(String text) {
         if (!text.contains(",")) {
             return -1;
         }
 
-        String[] numbers = text.split(",");
-
+        String[] numbers = text.split(", | :");
         int sum = 0;
         for (String number : numbers) {
             int num;
@@ -18,7 +18,7 @@ public class StringCalculator {
             }catch (NumberFormatException e) {
                 return -1;
             }
-            if (num < 0) {
+            if (num < 0) { // 요구사항: 음수를 입력하는 경우 RuntimeException을 발생시킨다.
                 throw new RuntimeException("음수는 입력할 수 없습니다.");
             }
 
