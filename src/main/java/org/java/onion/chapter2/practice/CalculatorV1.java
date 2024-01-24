@@ -1,4 +1,4 @@
-package org.java.onion.chapter2.testandrefactor;
+package org.java.onion.chapter2.practice;
 
 /*
 서비스를 담당하는 프로덕션 코드와 테스트 코드(main())가 같은 클래스에 있어서 문제이다.

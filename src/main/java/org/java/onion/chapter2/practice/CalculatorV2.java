@@ -1,4 +1,4 @@
-package org.java.onion.chapter2.testandrefactor;
+package org.java.onion.chapter2.practice;
 
 // V2에서는 테스트 코드를 분리시켰다.
 

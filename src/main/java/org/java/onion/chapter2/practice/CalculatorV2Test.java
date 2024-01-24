@@ -1,4 +1,4 @@
-package org.java.onion.chapter2.testandrefactor;
+package org.java.onion.chapter2.practice;
 
 /*
 테스트 코드를 각 메소드 별로 분리하였다.
@@ -9,7 +9,7 @@ JUnit은 내가 관심 가지는 메소드에 대한 테스트만 가능하다.
 그리고 로직을 실행한 후의 결과 값 확인을 프로그래밍을 통해 자동화하는 것이 가능하다.
 다음 버전에서는 JUnit을 사용한다.
  */
-public class CalculatorTestV2 {
+public class CalculatorV2Test {
     public static void main(String[] args) {
         CalculatorV2 cal = new CalculatorV2();
         add(cal);
