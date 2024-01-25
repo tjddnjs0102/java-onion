@@ -3,13 +3,18 @@ package org.java.onion.chapter2.real;
 import java.util.Scanner;
 
 public class StringCalculator {
+    // 누군가 add 메서드를 봤을 때 어떤 역할인지 알기 쉽도록 만들기
     int add(String text) {
-        if (text == null || text.isEmpty()) {
+        if (isBlank(text)) {
             return 0;
         }
 
         String[] numbers = splitNumbers(text);
         return sumNumbers(numbers);
+    }
+
+    private boolean isBlank(String text) {
+        return text == null || text.isEmpty();
     }
 
     private String[] splitNumbers(String text) {
