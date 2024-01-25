@@ -3,22 +3,28 @@ package org.java.onion.chapter2.real;
 import java.util.Scanner;
 
 public class StringCalculator {
-    // 요구사항: 전달하는 문자를 구분자로 분리한 후 각 숫자의 합을 구해 반환한다.
     int add(String text) {
         if (text == null || text.isEmpty()) {
             return 0;
         }
 
-        String[] numbers = text.split(",|:");
+        String[] numbers = splitNumbers(text);
+        return sumNumbers(numbers);
+    }
 
+    private String[] splitNumbers(String text) {
+        return text.split(",|:");
+    }
+
+    private int sumNumbers(String[] numbers) {
         int sum = 0;
         for (String number : numbers) {
-            sum += parseAndValidate(number);
+            sum += parseAndValidateNumber(number);
         }
         return sum;
     }
 
-    private int parseAndValidate(String number) {
+    private int parseAndValidateNumber(String number) {
         int num;
         try {
             num = Integer.parseInt(number.trim());
