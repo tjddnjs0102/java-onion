@@ -33,4 +33,9 @@ class StringCalculatorTest {
     public void add4() throws Exception {
         assertEquals(6, cal.add("1,2:3"));
     }
+
+    @Test
+    public void add5() throws Exception {
+        assertEquals(6, cal.add("//;|1;2;3"));
+    }
 }

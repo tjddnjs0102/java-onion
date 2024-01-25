@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
-    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.+)\n(.*)");
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\\|(.*)");
 
     // 누군가 add 메서드를 봤을 때 어떤 역할인지 알기 쉽도록 만들기
     int add(String text) {
@@ -18,18 +18,19 @@ public class StringCalculator {
         return sumNumbers(numbers);
     }
 
+    private String[] splitNumbers(String text) {
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(text);
+        if (matcher.find()) {
+            String customDelimiter = Pattern.quote(matcher.group(1));
+            String[] tokens = matcher.group(2).split(customDelimiter);
+            return tokens;
+        }
+        return text.split(",|:");
+    }
+
 
     private boolean isBlank(String text) {
         return text == null || text.isEmpty();
-    }
-
-    private String[] splitNumbers(String text) {
-        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(text);
-        if (matcher.matches()) {
-            String delimiter = Pattern.quote(matcher.group(1));
-            return matcher.group(2).split(delimiter);
-        }
-        return text.split(",|:");
     }
 
 
@@ -54,23 +55,5 @@ public class StringCalculator {
         }
 
         return num;
-    }
-
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        while (true) {
-            System.out.println("쉼표(,) 혹은 클론(:)으로 구분된 값을 입력하시오.");
-            String input = scanner.nextLine();
-            StringCalculator calculator = new StringCalculator();
-            try {
-                int result = calculator.add(input);
-                System.out.println("합계: " + result);
-                break;
-            } catch (RuntimeException e) {
-                System.out.println(e.getMessage());
-            }
-        }
     }
 }
