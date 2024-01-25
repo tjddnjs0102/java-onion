@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class StringCalculator {
     // 요구사항: 전달하는 문자를 구분자로 분리한 후 각 숫자의 합을 구해 반환한다.
     int add(String text) {
-        if (text == null || text.isEmpty() || text.equals("")) {
+        if (text == null || text.isEmpty()) {
             return 0;
         }
 
